@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
     <classPathEntry
-            location="D:\Git\spring2\lib\mysql-connector-java-5.1.30-bin.jar"/>
+            location="D:\mysql-connector-java-5.1.6.jar"/>
     <context id="mysql_tables" >
         <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
         <commentGenerator>
@@ -15,12 +15,12 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3312/recommend"
-                        userId="bjrec"
-                        password="bjrecTest"/>
-        <javaModelGenerator targetPackage="com.netease.dpmaterial.datahandle.domain" targetProject="src\main\java" />
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/tyre"
+                        userId="root"
+                        password="root"/>
+        <javaModelGenerator targetPackage="com.tyre.lca.domain" targetProject="src\main\java" />
         <sqlMapGenerator targetPackage="mappersConfig" targetProject="src\main\resources" />
-        <javaClientGenerator targetPackage="com.netease.dpmaterial.datahandle.dao.mapper" targetProject="src\main\java" type="XMLMAPPER" />
+        <javaClientGenerator targetPackage="com.tyre.lca.dao.mapper" targetProject="src\main\java" type="XMLMAPPER" />
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
         <!--   <table schema="test" tableName="users" domainObjectName="User"
@@ -28,8 +28,8 @@
                   enableDeleteByExample="false" enableSelectByExample="false"
                   selectByExampleQueryId="false">
            </table>-->
-        <table tableName="dp_material_data">
-            <columnOverride column="material_data" jdbcType="VARCHAR"> </columnOverride>
+        <table tableName="maunfacturer">
+            <columnOverride column="desc" jdbcType="VARCHAR"> </columnOverride>
         </table>
 
     </context>

@@ -150,14 +150,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--<plugin>
-                &lt;!&ndash;Mybatis-generator插件,用于自动生成Mapper和POJO&ndash;&gt;
+			<plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
                 <configuration>
-                    &lt;!&ndash;配置文件的位置&ndash;&gt;
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+
+                    <configurationFile>src/main/resources/generator.xml</configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
@@ -176,7 +175,7 @@
                         <version>1.3.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>-->
+            </plugin>
 		</plugins>
 	</build>
 
