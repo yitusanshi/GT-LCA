@@ -33,6 +33,8 @@ public class UserRegisterController {
         } catch (ParamException e) {
             return e;
         }
+        Maunfacturer maunfacturer = registerService.getObject(json);
+
         return new ParamException(Constants.RIGHT_CODE, "注册成功");
     }
 
