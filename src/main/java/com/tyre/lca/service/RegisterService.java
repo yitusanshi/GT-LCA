@@ -2,6 +2,7 @@ package com.tyre.lca.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tyre.lca.common.Constants;
+import com.tyre.lca.dao.mapper.MaunfacturerMapper;
 import com.tyre.lca.domain.Maunfacturer;
 import com.tyre.lca.domain.ParamException;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +19,8 @@ public class RegisterService  {
     private Logger logger = LoggerFactory.getLogger(RegisterService.class);
     @Resource
     private BaseService baseService;
+    @Resource
+    private MaunfacturerMapper maunfacturerMapper;
     public static String PHONE_PATTERN = "^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\\\\d{8}$";
     public static String EMAIL_PATTERN = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.[a-zA-Z0-9]{2,6}$";
     public void judgeNormal(JSONObject json) throws ParamException {
@@ -35,6 +38,10 @@ public class RegisterService  {
         Maunfacturer maunfacturer = new Maunfacturer();
         if (StringUtils.isEmpty(username)){
             throw new ParamException(Constants.ERROR_CODE, "用户名为空");
+        }
+        username = username.trim();
+        if (maunfacturerMapper.selectUser(username) != null){
+            throw new ParamException(Constants.ERROR_CODE, "该用户名已经被注册");
         }
         if (StringUtils.isEmpty(password1) || StringUtils.isEmpty(password2)){
             throw new ParamException(Constants.ERROR_CODE, "密码不能为空");
